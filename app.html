@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#e91e63" />
+  <title>CV – Julieta Sofía</title>
+  <meta name="description" content="Currículum web de Julieta Sofía · Desarrolladora Web Frontend. HTML, CSS, JavaScript, React.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      /* Paleta rosa */
+      --rose-950:#5f0f3d;
+      --rose-900:#7b1b4e;
+      --rose-700:#c2185b;
+      --rose-600:#e91e63;
+      --rose-500:#f06292;
+      --rose-300:#f8bbd0;
+      --rose-200:#fad3e5;
+      --rose-100:#fde4ef;
+      --ink:#222;
+      --muted:#5b5b5b;
+      --card:#fff;
+      --radius:16px;
+      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --max:1100px;
+      --ok:#1b5e20;
+      --err:#c62828;
+      --ring:#ef5da8;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',system-ui,Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background: radial-gradient(1200px 600px at 100% 0%, #fff 0%, var(--rose-100) 100%);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Header con foto y CTA */
+    .hero{max-width:var(--max);margin:auto;padding:28px 20px 0}
+    .hero-card{
+      background:linear-gradient(180deg,#fff, var(--rose-100));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      display:grid;grid-template-columns:160px 1fr;gap:24px;
+      padding:28px;align-items:center;border:1px solid var(--rose-200);
+    }
+    .avatar{
+      width:140px;height:140px;border-radius:50%;
+      object-fit:cover;border:5px solid #fff;box-shadow:0 8px 18px rgba(233,30,99,.25)
+    }
+    .title h1{margin:0 0 6px 0;font-size:clamp(28px,4vw,40px);letter-spacing:.2px}
+    .title p{margin:0;color:var(--muted)}
+    .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      font-size:.86rem;padding:6px 10px;border-radius:999px;background:var(--rose-100);color:var(--rose-700);
+      border:1px solid #f7c5da;
+    }
+    .cta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{
+      appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:600;cursor:pointer;
+      transition:transform .06s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--rose-600);color:#fff;box-shadow:0 6px 14px rgba(233,30,99,.25)}
+    .btn-primary:hover{background:#d8165b}
+    .btn-outline{background:#fff;border:2px solid var(--rose-300);color:var(--rose-700)}
+    .btn-outline:hover{background:var(--rose-100)}
+
+    /* Nav sticky */
+    .nav{position:sticky;top:0;z-index:10;background:#ffffffc8;
+      backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid #f2d7e5}
+    .nav-inner{max-width:var(--max);margin:auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap}
+    .nav a{
+      text-decoration:none;color:var(--rose-700);font-weight:600;padding:8px 12px;border-radius:999px
+    }
+    .nav a:hover,.nav a:focus-visible{background:var(--rose-100);outline:none;box-shadow:0 0 0 3px #0000, 0 0 0 3px var(--rose-100)}
+
+    /* Layout de secciones */
+    .container{max-width:var(--max);margin:0 auto;padding:26px 20px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    @media (max-width:900px){.hero-card{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+
+    .section{margin-bottom:24px}
+    .card{
+      background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:22px;border:1px solid var(--rose-200)
+    }
+    .section h2{margin:0 0 14px 0;font-size:clamp(20px,2.7vw,26px);color:var(--rose-700)}
+
+    /* Items */
+    .item{display:grid;grid-template-columns:auto 1fr;gap:10px;margin:12px 0}
+    .bullet{width:10px;height:10px;border-radius:50%;background:var(--rose-600);margin-top:8px}
+    .role{font-weight:700}
+    .meta{color:var(--muted);font-size:.92rem}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{background:var(--rose-100);border:1px solid #f7c5da;color:var(--rose-900);
+      padding:8px 10px;border-radius:10px;font-weight:600;font-size:.95rem}
+    .bar{height:10px;background:#f3f3f3;border-radius:999px;overflow:hidden}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--rose-500),var(--rose-600))}
+    .bar + small{color:var(--muted)}
+
+    /* Portfolio mini cards */
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    @media (max-width:700px){.cards{grid-template-columns:1fr}}
+    .thumb{border-radius:12px;overflow:hidden;border:1px solid #f4d2e2;transition:transform .2s}
+    .thumb:hover{transform:translateY(-2px)}
+    .thumb img{width:100%;display:block}
+    .thumb h4{margin:10px 10px 12px 10px}
+
+    /* Contacto */
+    form{display:grid;gap:14px}
+    .field{display:grid;gap:6px}
+    label{font-weight:600}
+    input,textarea{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e5c2d2;font-size:1rem;
+      transition:border-color .15s, box-shadow .15s, background .15s;
+      background:#fff;
+    }
+    input::placeholder,textarea::placeholder{color:#b88aa1}
+    input:focus,textarea:focus{outline:none;border-color:var(--ring);box-shadow:0 0 0 3px #ef5da833}
+    .help{font-size:.9rem;color:var(--muted)}
+    .error{font-size:.9rem;color:var(--err);min-height:1.1em}
+    .success{font-size:.95rem;color:var(--ok)}
+    .msg{display:none}
+    .msg.show{display:block}
+    .is-error{border-color:var(--err)!important;box-shadow:0 0 0 3px #c6282830!important;background:#fff8f8}
+    .is-valid{border-color:#2e7d32;background:#f3fff4}
+    .honeypot{position:absolute;left:-5000px;opacity:0}
+    .footer{text-align:center;color:var(--muted);padding:30px 20px}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+    /* ===== Mobile tweaks ===== */
+    @media (max-width:768px){
+      body{ line-height:1.7; overflow-x:hidden; }
+      .hero{ padding:18px 16px 0; }
+      .hero-card{ grid-template-columns:1fr; text-align:center; padding:20px; gap:16px; }
+      .avatar{ width:120px; height:120px; margin:0 auto; }
+      .cta{ justify-content:center; }
+      .nav-inner{ padding:8px 12px; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+      .nav-inner::-webkit-scrollbar{ display:none; }
+      .container{ padding:18px 16px; }
+      .grid{ grid-template-columns:1fr; gap:16px; }
+      .section{ margin-bottom:16px; }
+      .card{ padding:16px; }
+      .cards{ grid-template-columns:1fr; }
+      input, textarea{ font-size:16px; } /* evita zoom en iOS */
+      .btn{ width:100%; } /* botones cómodos al tacto */
+    }
+    img{ max-width:100%; height:auto; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero" id="inicio">
+    <div class="hero-card">
+      <img class="avatar" src="mifoto.jpg" alt="Foto de Julieta Sofía">
+      <div class="title">
+        <h1>Julieta Sofía</h1>
+        <p>Desarrolladora Web · Córdoba, Argentina</p>
+        <div class="tags">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contacto">Contactarme</a>
+          <a class="btn btn-outline" href="#proyectos">Ver proyectos</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#educacion">Educación</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="container">
+    <div class="grid">
+      <!-- Columna izquierda -->
+      <div>
+        <!-- SOBRE MI -->
+        <section id="sobre-mi" class="section card">
+          <h2>Sobre mí</h2>
+          <p>Soy estudiante de Ingeniería en Sistemas, enfocada en frontend. Me gustan los productos con buena UX/UI y las interfaces claras, accesibles y responsive.</p>
+
+          <div class="item">
+            <div class="bullet"></div>
+            <div>
+              <span class="role">Edad:</span> 21 ·
+              <span class="role">Email:</span>
+              <a href="mailto:julietameli18@icloud.com">julietameli18@icloud.com</a>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="bullet"></div>
+            <div>
+              <span class="role">Tel:</span>
+              <a href="tel:+543513255292">+54 351 3255 292</a> ·
+              <span class="role">Ubicación:</span> Córdoba
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCIA -->
+        <section id="experiencia" class="section card">
+          <h2>Experiencia</h2>
+
+          <div class="item">
+            <div class="bullet"></div>
+            <div>
+              <div class="role">Frontend Trainee · Proyecto PropControl</div>
+              <div class="meta">2024 – Presente · Go + React · JWT · MySQL</div>
+              <p>Desarrollo de vistas, consumo de APIs, manejo de formularios y validaciones. Maquetación responsive con estilos consistentes.</p>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="bullet"></div>
+            <div>
+              <div class="role">Proyecto Actividades Deportivas</div>
+              <div class="meta">2024 – 2025 · React + Go · REST</div>
+              <p>Listado de actividades, detalle con turnos e inscripción con feedback de éxito/error.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCACION -->
+        <section id="educacion" class="section card">
+          <h2>Educación</h2>
+          <div class="item">
+            <div class="bullet"></div>
+            <div>
+              <div class="role">Ingeniería en Sistemas</div>
+              <div class="meta">UCC · 2022 – Actualidad</div>
+              <p>Materias destacadas: Arquitectura de Computadoras, Redes, Bases de Datos, Programación III.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Columna derecha -->
+      <div>
+        <!-- HABILIDADES -->
+        <section id="habilidades" class="section card">
+          <h2>Habilidades</h2>
+          <div class="skills">
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">Git & GitHub</span>
+            <span class="skill">MySQL</span>
+          </div>
+          <div style="margin-top:14px">
+            <div>HTML/CSS</div>
+            <div class="bar" aria-label="nivel html css"><span style="width:88%"></span></div>
+            <small>Avanzado</small>
+          </div>
+          <div style="margin-top:10px">
+            <div>JavaScript</div>
+            <div class="bar" aria-label="nivel js"><span style="width:70%"></span></div>
+            <small>Intermedio</small>
+          </div>
+          <div style="margin-top:10px">
+            <div>React</div>
+            <div class="bar" aria-label="nivel react"><span style="width:60%"></span></div>
+            <small>Intermedio</small>
+          </div>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section id="proyectos" class="section card">
+          <h2>Proyectos</h2>
+          <div class="cards">
+            <article class="thumb">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" alt="Proyecto 1" />
+              <h4>Landing responsive</h4>
+            </article>
+            <article class="thumb">
+              <img src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=800&auto=format&fit=crop" alt="Proyecto 2" />
+              <h4>Sistema de actividades</h4>
+            </article>
+          </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="section card" aria-labelledby="titulo-contacto">
+          <h2 id="titulo-contacto">Contacto</h2>
+
+          <form id="form" class="form" novalidate>
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                inputmode="text"
+                autocomplete="name"
+                required
+                minlength="3"
+                maxlength="60"
+                pattern="^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:[ '][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*$"
+                placeholder="Tu nombre"
+                aria-describedby="err-nombre help-nombre"
+              />
+              <div id="help-nombre" class="help">Solo letras y espacios (se permiten acentos y apóstrofo).</div>
+              <div id="err-nombre" class="error" aria-live="polite"></div>
+            </div>
+
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                required
+                placeholder="ejemplo@email.com"
+                aria-describedby="err-email"
+              />
+              <div id="err-email" class="error" aria-live="polite"></div>
+            </div>
+
+            <div class="field">
+              <label for="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                required
+                minlength="10"
+                maxlength="500"
+                placeholder="Contame en qué te puedo ayudar"
+                aria-describedby="err-mensaje"
+              ></textarea>
+              <div id="err-mensaje" class="error" aria-live="polite"></div>
+            </div>
+
+            <!-- Honeypot anti-spam -->
+            <div class="honeypot" aria-hidden="true">
+              <label for="_gotcha" class="sr-only">No completar</label>
+              <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+            </div>
+
+            <button id="submitBtn" class="btn btn-primary" type="submit">
+              Enviar mensaje
+            </button>
+
+            <p id="form-msg" class="msg" role="alert" aria-live="polite"></p>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © <span id="y"></span> Julieta Sofía — Hecho con ♥ en tonos rosa
+  </footer>
+
+  <script>
+    // ===== Ajustes y helpers =====
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const FORMSPREE_ENDPOINT = 'ACTION_FORMSPREE_REEMPLAZAR'; // ← pegá acá tu URL de Formspree
+    const form = document.getElementById('form');
+    const submitBtn = document.getElementById('submitBtn');
+    const msg = document.getElementById('form-msg');
+
+    const fields = {
+      nombre: document.getElementById('nombre'),
+      email: document.getElementById('email'),
+      mensaje: document.getElementById('mensaje'),
+      gotcha: document.getElementById('_gotcha')
+    };
+    const errors = {
+      nombre: document.getElementById('err-nombre'),
+      email: document.getElementById('err-email'),
+      mensaje: document.getElementById('err-mensaje')
+    };
+
+    const patterns = {
+      nombre: /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:[ '][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*$/,
+      email: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+    };
+
+    function setError(input, elError, text){
+      input.classList.remove('is-valid');
+      input.classList.add('is-error');
+      elError.textContent = text || '';
+    }
+    function clearError(input, elError){
+      input.classList.remove('is-error');
+      if (input.value.trim().length > 0) input.classList.add('is-valid');
+      elError.textContent = '';
+    }
+
+    function validateNombre(){
+      const v = fields.nombre.value.trim();
+      if (!v) return setError(fields.nombre, errors.nombre, 'El nombre es obligatorio.');
+      if (v.length < 3) return setError(fields.nombre, errors.nombre, 'Mínimo 3 caracteres.');
+      if (v.length > 60) return setError(fields.nombre, errors.nombre, 'Máximo 60 caracteres.');
+      if (!patterns.nombre.test(v)) return setError(fields.nombre, errors.nombre, 'Usá solo letras y espacios (acentos OK).');
+      clearError(fields.nombre, errors.nombre);
+      return true;
+    }
+    function validateEmail(){
+      const v = fields.email.value.trim();
+      if (!v) return setError(fields.email, errors.email, 'El email es obligatorio.');
+      if (!patterns.email.test(v)) return setError(fields.email, errors.email, 'Ingresá un email válido (ej: nombre@dominio.com).');
+      clearError(fields.email, errors.email);
+      return true;
+    }
+    function validateMensaje(){
+      const v = fields.mensaje.value.trim();
+      if (!v) return setError(fields.mensaje, errors.mensaje, 'El mensaje es obligatorio.');
+      if (v.length < 10) return setError(fields.mensaje, errors.mensaje, 'Contame un poco más (mín. 10).');
+      if (v.length > 500) return setError(fields.mensaje, errors.mensaje, 'Máximo 500 caracteres.');
+      clearError(fields.mensaje, errors.mensaje);
+      return true;
+    }
+
+    // Validación en vivo
+    fields.nombre.addEventListener('input', validateNombre);
+    fields.email.addEventListener('input', validateEmail);
+    fields.mensaje.addEventListener('input', validateMensaje);
+
+    // Envío
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.classList.add('show');
+      msg.classList.remove('success');
+      msg.style.color = '#555';
+
+      const ok = [validateNombre(), validateEmail(), validateMensaje()].every(Boolean);
+      if (!ok) {
+        msg.textContent = 'Revisá los campos marcados en rojo.';
+        return;
+      }
+      if (fields.gotcha.value) { // bot
+        msg.textContent = 'Detectamos actividad sospechosa.';
+        return;
+      }
+      if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('REEMPLAZAR')) {
+        msg.textContent = '⚠️ Configurá tu Formspree pegando el endpoint en el código.';
+        msg.style.color = '#c62828';
+        return;
+      }
+
+      // Estado de envío
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+      msg.textContent = 'Enviando…';
+
+      try {
+        const payload = {
+          nombre: fields.nombre.value.trim(),
+          email: fields.email.value.trim(),
+          mensaje: fields.mensaje.value.trim(),
+          _subject: 'Nuevo mensaje desde el CV de Julieta',
+        };
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json','Accept':'application/json'},
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          form.reset();
+          Object.values(fields).forEach(i => i.classList && i.classList.remove('is-valid','is-error'));
+          msg.textContent = '¡Gracias! Tu mensaje fue enviado correctamente.';
+          msg.style.color = '#1b5e20';
+          submitBtn.textContent = 'Enviar mensaje';
+        } else {
+          const data = await res.json().catch(()=> ({}));
+          msg.textContent = data?.error || 'No se pudo enviar. Probá de nuevo más tarde.';
+          msg.style.color = '#c62828';
+          submitBtn.textContent = 'Reintentar';
+        }
+      } catch (err) {
+        msg.textContent = 'Error de red. Verificá tu conexión e intentá otra vez.';
+        msg.style.color = '#c62828';
+        submitBtn.textContent = 'Reintentar';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.project-list {
+    margin: 20px 0;
+}
+
+.position-list {
+    margin: 20px 0;
+}
+
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}

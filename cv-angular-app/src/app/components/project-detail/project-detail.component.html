@@ -1,0 +1,10 @@
+<p *ngIf="project">
+  <h2>{{ project.title }}</h2>
+  <img *ngIf="project.imageUrl" [src]="project.imageUrl" alt="{{ project.title }}" />
+  <p>{{ project.description }}</p>
+  <h3>Technologies Used:</h3>
+  <ul>
+    <li *ngFor="let tech of project.technologies">{{ tech }}</li>
+  </ul>
+</p>
+<p *ngIf="!project">Project details not available.</p>

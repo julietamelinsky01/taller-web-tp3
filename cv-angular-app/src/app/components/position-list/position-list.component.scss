@@ -1,0 +1,34 @@
+.position-list {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.position-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s;
+}
+
+.position-item:hover {
+    background-color: #e9e9e9;
+}
+
+.position-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.position-duration {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.position-description {
+    font-size: 1em;
+    color: #555;
+}
