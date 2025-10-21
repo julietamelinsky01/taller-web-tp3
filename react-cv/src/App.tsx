@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./styles.css";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -13,14 +12,17 @@ import "./styles.css";
 export default function App(){
   return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/artworks" element={<Artworks/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/login" element={<Login/>} />
+        {/* Públicas */}
+        <Route path="/" element={<Home />} />
+        <Route path="/artworks" element={<Artworks />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        {/* Privada */}
         <Route path="/projects" element={<PrivateRoute><Projects/></PrivateRoute>} />
-        <Route path="*" element={<NotFound/>} />
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

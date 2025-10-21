@@ -1,16 +1,25 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Paper, Stack } from "@mui/material";
 import { useAuth } from "../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-export default function Login(){
+export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
+
   return (
-    <Box className="container">
-      <Typography variant="h4" gutterBottom>Login</Typography>
-      <Button variant="contained" onClick={()=>{ login(); navigate("/projects",{ replace:true }); }}>
-        Iniciar sesión
-      </Button>
+    <Box sx={{ minHeight: "60vh", display: "grid", placeItems: "center" }}>
+      <Paper elevation={3} sx={{ p: 4, width: "min(520px, 92vw)", borderRadius: 3 }}>
+        <Stack spacing={3}>
+          <Typography variant="h4">Login</Typography>
+          <Button
+            onClick={() => { login(); navigate("/projects", { replace: true }); }}
+            variant="contained"
+            size="large"
+          >
+            Iniciar sesión
+          </Button>
+        </Stack>
+      </Paper>
     </Box>
   );
 }
